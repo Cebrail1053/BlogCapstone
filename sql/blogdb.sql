@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `blogdb`.`post` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NULL,
+  `title` VARCHAR(200) NULL,
   `content` LONGTEXT NOT NULL,
   `time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT NOT NULL,
@@ -83,3 +83,50 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `blogdb`.`user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `blogdb`;
+INSERT INTO `blogdb`.`user` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES (1, 'John', 'Doe', 'johndoe@gmail.com', 'admin', 'admin');
+INSERT INTO `blogdb`.`user` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES (2, 'Joe', 'Dirt', 'jdirt@hotmail.com', 'dirt2344', 'moderator');
+INSERT INTO `blogdb`.`user` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES (3, 'Bruce', 'Wayne', 'batman@batmail.com', 'gotham4ever', 'guest');
+INSERT INTO `blogdb`.`user` (`id`, `first_name`, `last_name`, `email`, `password`, `role`) VALUES (4, 'Peter', 'Parker', 'auntmay@spiderguy.com', 'spiderpig', 'guest');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `blogdb`.`post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `blogdb`;
+INSERT INTO `blogdb`.`post` (`id`, `title`, `content`, `time`, `user_id`, `approved`) VALUES (1, 'Test Post', 'New to the blog environment, but happy to release our first test blog post', '2021-12-08 02:25:28', 1, 1);
+INSERT INTO `blogdb`.`post` (`id`, `title`, `content`, `time`, `user_id`, `approved`) VALUES (2, 'Will the PS5 be in stock for Christmas', 'Will the PS5 be up for grabs for Christmas 2021?', '2021-12-08 02:35:12', 2, 0);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `blogdb`.`category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `blogdb`;
+INSERT INTO `blogdb`.`category` (`id`, `category`) VALUES (1, 'Pop Culture');
+INSERT INTO `blogdb`.`category` (`id`, `category`) VALUES (2, 'Politics');
+INSERT INTO `blogdb`.`category` (`id`, `category`) VALUES (3, 'Gossip');
+INSERT INTO `blogdb`.`category` (`id`, `category`) VALUES (4, 'Tech');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `blogdb`.`post_has_category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `blogdb`;
+INSERT INTO `blogdb`.`post_has_category` (`post_id`, `category_id`) VALUES (2, 4);
+
+COMMIT;
+
