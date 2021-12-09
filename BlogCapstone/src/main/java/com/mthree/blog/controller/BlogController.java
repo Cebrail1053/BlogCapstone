@@ -22,7 +22,14 @@ public class BlogController {
 	
 	//TODO: Implement REST endpoints
         
-        
+    /*
+    Sample input:
+        {
+            "title": "Black Friday Deals",
+            "content": "Sample sample sample bla bla",
+            "userId": 2
+        }
+    */
     @PostMapping("/post")
     public int createPost(@RequestBody Post newPost){
         

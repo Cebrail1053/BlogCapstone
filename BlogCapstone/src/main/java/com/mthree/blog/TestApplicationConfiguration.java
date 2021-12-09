@@ -1,4 +1,4 @@
-package com.mthree.blog.app;
+package com.mthree.blog;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
