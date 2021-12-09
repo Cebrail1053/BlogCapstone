@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/blog")
 public class BlogController {
 	
 	@Autowired
@@ -37,12 +37,12 @@ public class BlogController {
     
     @GetMapping("/posts")
     public List<Post> getAllPosts(){
-        return null;
+        return svc.getAllPosts();
     }
     
     @GetMapping("/categories")
     public List<Category> getAllCategories(){
-        return null;
+        return svc.getAllCategories();
     }
     
     
