@@ -74,6 +74,7 @@ public class BlogDAOImpl implements BlogDAO {
 		return jdbc.queryForObject(s, new UserMapper(), id);
 	}
 
+
 //	================= RowMappers ================
 
 	public static final class PostMapper implements RowMapper<Post> {

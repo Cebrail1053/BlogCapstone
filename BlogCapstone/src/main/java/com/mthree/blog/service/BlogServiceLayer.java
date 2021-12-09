@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mthree.blog.dao.BlogDAO;
+import com.mthree.blog.entities.Post;
 
 @Service
 public class BlogServiceLayer {
@@ -12,4 +13,12 @@ public class BlogServiceLayer {
 	private BlogDAO dao;
 	
 	//TODO: Complete Service Layer
+
+    public void createPost(Post newPost) {
+        dao.addPost(newPost, 1);
+    }
+
+    public Post getPostById(int postID) {
+        return dao.getPostById(postID);
+    }
 }

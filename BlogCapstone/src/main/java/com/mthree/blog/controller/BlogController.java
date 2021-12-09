@@ -1,5 +1,6 @@
 package com.mthree.blog.controller;
 
+import com.mthree.blog.entities.Category;
 import com.mthree.blog.entities.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +25,14 @@ public class BlogController {
         
     @PostMapping("/post")
     public int createPost(@RequestBody Post newPost){
-        return 1;
+        
+        svc.createPost(newPost);
+        return newPost.getId();
     }
     
     @GetMapping("/post/{postID}")
     public Post getPost(@PathVariable int postID){
-        return null;
+        return svc.getPostById(postID);
     }
     
     @GetMapping("/posts")
@@ -41,5 +44,7 @@ public class BlogController {
     public List<Category> getAllCategories(){
         return null;
     }
+    
+    
 
 }
