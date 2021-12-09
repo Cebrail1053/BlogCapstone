@@ -1,5 +1,6 @@
 package com.mthree.blog.controller;
 
+import com.mthree.blog.entities.Category;
 import com.mthree.blog.entities.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/blog")
 public class BlogController {
 	
 	@Autowired
@@ -21,25 +22,36 @@ public class BlogController {
 	
 	//TODO: Implement REST endpoints
         
-        
+    /*
+    Sample input:
+        {
+            "title": "Black Friday Deals",
+            "content": "Sample sample sample bla bla",
+            "userId": 2
+        }
+    */
     @PostMapping("/post")
     public int createPost(@RequestBody Post newPost){
-        return 1;
+        
+        svc.createPost(newPost);
+        return newPost.getId();
     }
     
     @GetMapping("/post/{postID}")
     public Post getPost(@PathVariable int postID){
-        return null;
+        return svc.getPostById(postID);
     }
     
     @GetMapping("/posts")
     public List<Post> getAllPosts(){
-        return null;
+        return svc.getAllPosts();
     }
     
     @GetMapping("/categories")
     public List<Category> getAllCategories(){
-        return null;
+        return svc.getAllCategories();
     }
+    
+    
 
 }

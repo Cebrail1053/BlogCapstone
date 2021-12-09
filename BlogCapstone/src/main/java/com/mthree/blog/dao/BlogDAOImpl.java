@@ -74,6 +74,7 @@ public class BlogDAOImpl implements BlogDAO {
 		return jdbc.queryForObject(s, new UserMapper(), id);
 	}
 
+
 //	================= RowMappers ================
 
 	public static final class PostMapper implements RowMapper<Post> {
@@ -81,7 +82,7 @@ public class BlogDAOImpl implements BlogDAO {
 		public Post mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Post p = new Post();
 			p.setId(rs.getInt("id"));
-			p.setTitle(rs.getString(rs.getString("title")));
+			p.setTitle(rs.getString("title"));
 			p.setContent(rs.getString("content"));
 
 			Timestamp timestamp = rs.getTimestamp("time");
